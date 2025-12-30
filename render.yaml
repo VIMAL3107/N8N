@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: n8n-instance
+    env: docker
+    plan: starter # n8n requires more RAM than the free plan provides usually
+    disk:
+      name: n8n-data
+      mountPath: /home/node/.n8n
+      sizeGB: 1
+    envVars:
+      - key: N8N_PORT
+        value: 5678
+      - key: N8N_PROTOCOL
+        value: https
+      - key: NODE_ENV
+        value: production
+      - key: WEBHOOK_URL
+        fromService:
+          type: web
+          name: n8n-instance
+          property: url
+      - key: N8N_ENCRYPTION_KEY
+        generateValue: true
