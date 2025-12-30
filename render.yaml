@@ -21,3 +21,5 @@ services:
           property: url
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
+      - key: GENERIC_TIMEZONE
+        value: Asia/Kolkata
