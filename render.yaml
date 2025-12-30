@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: n8n-instance
+    name: automation-workflows
     env: docker
     plan: starter # n8n requires more RAM than the free plan provides usually
     disk:
@@ -17,7 +17,7 @@ services:
       - key: WEBHOOK_URL
         fromService:
           type: web
-          name: n8n-instance
+          name: automation-workflows
           property: url
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
